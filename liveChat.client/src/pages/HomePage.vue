@@ -1,44 +1,48 @@
 <template>
-  <div class="home flex-grow-1 d-flex flex-column align-items-center justify-content-center">
-    <div class="home-card p-5 bg-white rounded elevation-3">
-      <img
-        src="https://bcw.blob.core.windows.net/public/img/8600856373152463"
-        alt="CodeWorks Logo"
-        class="rounded-circle"
-      >
-      <h1 class="my-5 bg-dark text-white p-3 rounded text-center">
-        Vue 3 Starter
-      </h1>
+  <div class="container-fluid bg-dark">
+    <div class="row gy-auto">
+      <div class="col-md-12 p-2  flip">
+        <div class="d-flex">
+          <p class="me-4 mb-0">Creator</p>
+          <p class="mb-0">createdAt</p>
+        </div>
+        <div class="card p-4 bg-success rounded w-25">
+          <p class="fs-5">content</p>
+        </div>
+      </div>
+      <div class="col-md-12 fixed-bottom">
+        <form @submit.prevent="handleSubmit()" class="form-control">
+          <textarea name="" id="" cols="10" rows="10"> </textarea>
+        </form>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import { computed } from "@vue/reactivity";
+import { AppState } from "../AppState.js";
+
 export default {
   setup() {
-    return {}
-  }
-}
+    return {
+      chats:computed(()=> AppState.chats),
+      async handleSubmit() {
+        try {
+        } catch (error) {
+          Pop.error(error, "[handleSubmit]");
+        }
+      },
+    };
+  },
+};
 </script>
 
 <style scoped lang="scss">
-.home {
-  display: grid;
-  height: 80vh;
-  place-content: center;
-  text-align: center;
-  user-select: none;
-
-  .home-card {
-    width: 50vw;
-
-    >img {
-      height: 200px;
-      max-width: 200px;
-      width: 100%;
-      object-fit: contain;
-      object-position: center;
-    }
-  }
+.container-fluid {
+  height: 100vh;
+}
+.flip div,p{
+  transform: rotate(180deg);
 }
 </style>
