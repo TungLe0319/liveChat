@@ -7,7 +7,7 @@
           <p class="mb-0">createdAt</p>
         </div>
         <div class="card p-4 bg-success rounded w-25">
-          <p class="fs-5" v-for="c in chats">{{ c }}</p>
+          <p class="fs-5" v-for="c in chats">{{ c.text }}</p>
         </div>
       </div>
       <div class="col-md-12">
@@ -31,13 +31,25 @@
 
 <script>
 import { computed,ref } from "@vue/reactivity";
+import { onMounted } from "vue";
 import { AppState } from "../AppState.js";
 import { supabaseService } from "../services/SubaseService.js";
 
 export default {
   setup() {
+    onMounted(()=>{
+      getChats()
+    })
     const editable = ref('')
+    async function getChats(){
+      try {
+          await supabaseService.getChats()
+        } catch (error) {
+          Pop.error(error,'[]')
+        }
+    }
     return {
+
       editable,
       chats: computed(() => AppState.chats),
       async handleSubmit() {
