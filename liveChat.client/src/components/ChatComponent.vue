@@ -39,8 +39,7 @@
 
 <script>
 import { computed } from "@vue/reactivity";
-import { AppState } from "../../AppState.js";
-import { GroupChat } from "../../models/GroupsAndGameNight/GroupChat.js";
+import { AppState } from "../AppState.js";
 
 export default {
   props: {
