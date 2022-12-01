@@ -1,14 +1,21 @@
-import '@mdi/font/css/materialdesignicons.css'
-import 'bootstrap'
-import { createApp } from 'vue'
+import "@mdi/font/css/materialdesignicons.css";
+import "bootstrap";
+import { createApp } from "vue";
 // @ts-ignore
-import App from './App.vue'
-import { registerGlobalComponents } from './registerGlobalComponents'
-import { router } from './router'
+import App from "./App.vue";
+import { registerGlobalComponents } from "./registerGlobalComponents";
+import { router } from "./router";
+import VueSupabase from "vue-supabase";
+import { supabaseUrl } from "./env";
 
-const root = createApp(App)
-registerGlobalComponents(root)
+const root = createApp(App);
+registerGlobalComponents(root);
 
 root
   .use(router)
-  .mount('#app')
+  .use(VueSupabase, {
+    supabaseUrl: supabaseUrl,
+    supabaseKey: supabaseKey,
+    supabaseOptions: {},
+  })
+  .mount("#app");
