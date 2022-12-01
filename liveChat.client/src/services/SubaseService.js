@@ -13,7 +13,7 @@ class SupabaseService {
       const res = await supabase.from("chats").upsert(data).select();
       // const res = await supabase.from("chats")
       console.log(res.data, "data");
-      this.addOrSkipArray(AppState.supabase, res.data[0]);
+      this.addOrSkipArray(AppState.chats, res.data[0]);
     } catch (error) {
       Pop.error(error);
     }
@@ -22,7 +22,7 @@ class SupabaseService {
   async getChats() {
     try {
       const res = await supabase.from("chats").select();
-      AppState.supabase = res.data;
+      AppState.chats = res.data;
     } catch (error) {
       Pop.error(error);
     }
