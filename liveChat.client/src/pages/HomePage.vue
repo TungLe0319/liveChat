@@ -14,7 +14,7 @@
         <form @submit.prevent="handleSubmit()" class="form-control">
           <div class="form-floating">
             <textarea
-            v-model="editable.text"
+            v-model="editable"
               class="form-control"
               placeholder="Leave a comment here"
               id="floatingTextarea2"
