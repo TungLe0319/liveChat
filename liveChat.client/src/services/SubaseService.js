@@ -20,6 +20,15 @@ class SupabaseService {
     }
   }
 
+  async getAccount(){
+    try {
+       const res =  await supabase.from("accounts").select()
+      } catch (error) {
+        Pop.error(error)
+      }
+
+  }
+
   async getChats() {
     try {
       const res = await supabase.from("Chats").select();

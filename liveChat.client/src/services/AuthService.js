@@ -1,6 +1,7 @@
 import { initialize } from "@bcwdev/auth0provider-client";
 import { AppState } from "../AppState";
 import { audience, clientId, domain } from "../env";
+import { Account } from "../models/Account";
 import { router } from "../router";
 import { accountService } from "./AccountService";
 import { api } from "./AxiosService";
@@ -24,7 +25,8 @@ AuthService.on(AuthService.AUTH_EVENTS.AUTHENTICATED, async function () {
   api.defaults.headers.authorization = AuthService.bearer;
   api.interceptors.request.use(refreshAuthToken);
   AppState.user = AuthService.user;
-  await accountService.getAccount();
+  // console.log(AppState.user);
+  await accountService.getAccount(new Account(AppState.user));
   socketService.authenticate(AuthService.bearer);
   // NOTE if there is something you want to do once the user is authenticated, place that here
 });
