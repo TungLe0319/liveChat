@@ -36,8 +36,9 @@ import { supabaseService } from "../services/SubaseService.js";
 
 export default {
   setup() {
-    const editable = ref({})
+    const editable = ref('')
     return {
+      editable,
       chats: computed(() => AppState.chats),
       async handleSubmit() {
         try {
