@@ -21,6 +21,7 @@
             ></textarea>
             <label for="floatingTextarea2">Comments</label>
           </div>
+          <button type="submit">POST</button>
         </form>
       </div>
     </div>

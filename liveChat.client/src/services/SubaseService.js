@@ -3,7 +3,7 @@ import { logger } from "../utils/Logger";
 import Pop from "../utils/Pop";
 import { supabase } from "../../supabase";
 
-import { chats } from "./FireBaseService";
+// import { chats } from "./FireBaseService";
 
 class SupabaseService {
   async addSupabaseChat(chat) {
