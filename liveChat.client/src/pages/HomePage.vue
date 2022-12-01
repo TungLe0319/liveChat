@@ -14,6 +14,7 @@
         <form @submit.prevent="handleSubmit()" class="form-control">
           <div class="form-floating">
             <textarea
+            v-model="editable.text"
               class="form-control"
               placeholder="Leave a comment here"
               id="floatingTextarea2"
@@ -29,17 +30,18 @@
 </template>
 
 <script>
-import { computed } from "@vue/reactivity";
+import { computed,ref } from "@vue/reactivity";
 import { AppState } from "../AppState.js";
 import { supabaseService } from "../services/SubaseService.js";
 
 export default {
   setup() {
+    const editable = ref({})
     return {
       chats: computed(() => AppState.chats),
       async handleSubmit() {
         try {
-          await supabaseService.addSupabaseChat();
+          await supabaseService.addSupabaseChat(editable.value);
         } catch (error) {
           Pop.error(error, "[handleSubmit]");
         }
