@@ -1,13 +1,16 @@
 <template>
   <div class="container-fluid bg-dark">
     <div class="row gy-auto">
-      <div class="col-md-12 p-2 flip">
+      <div class="col-md-12 p-2 scrollY ">
         <div class="d-flex">
           <p class="me-4 mb-0">Creator</p>
           <p class="mb-0">createdAt</p>
         </div>
-        <div class="card p-4 bg-success rounded w-25">
-          <p class="fs-5" v-for="c in chats">{{ c.text }}</p>
+        <div class="card p-4 bg-success rounded w-25 " v-for="c in chats">
+          <p class="fs-5" >{{ c.text }}</p>
+        </div>
+        <div class="empty p-5">
+          ertesgs
         </div>
       </div>
       <div class="col-md-12">
@@ -39,6 +42,7 @@ export default {
   setup() {
     onMounted(()=>{
       getChats()
+      
     })
     const editable = ref('')
     async function getChats(){
@@ -55,6 +59,7 @@ export default {
       async handleSubmit() {
         try {
           await supabaseService.addSupabaseChat(editable.value);
+         document.querySelector('#empty').scrollTo
         } catch (error) {
           Pop.error(error, "[handleSubmit]");
         }
@@ -65,11 +70,18 @@ export default {
 </script>
 
 <style scoped lang="scss">
+
+.empty{
+
+}
+
+.scrollY{
+  height: 60vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
 .container-fluid {
   height: 100vh;
 }
-.flip div,
-p {
-  transform: rotate(180deg);
-}
+
 </style>
