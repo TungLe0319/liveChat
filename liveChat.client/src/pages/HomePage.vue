@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid bg-dark">
-   <ChatComponent/>
+   <!-- <ChatComponent/> -->
   </div>
 </template>
 
