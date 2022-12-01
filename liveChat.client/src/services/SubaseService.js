@@ -8,9 +8,10 @@ import { supabase } from "../../supabase";
 class SupabaseService {
   async addSupabaseChat(chat) {
     try {
+      console.log(chat);
       let data = { text: chat };
       // console.log(chat);
-      const res = await supabase.from("chats").upsert(data).select();
+      const res = await supabase.from("Chats").upsert(data).select();
       // const res = await supabase.from("chats")
       console.log(res.data, "data");
       this.addOrSkipArray(AppState.chats, res.data[0]);
@@ -21,7 +22,7 @@ class SupabaseService {
 
   async getChats() {
     try {
-      const res = await supabase.from("chats").select();
+      const res = await supabase.from("Chats").select();
       AppState.chats = res.data;
     } catch (error) {
       Pop.error(error);
