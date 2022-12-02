@@ -1,16 +1,9 @@
 <template>
-  <div class="home flex-grow-1 d-flex flex-column align-items-center justify-content-center">
-    <div class="home-card p-5 bg-white rounded elevation-3">
-      <img
-        src="https://bcw.blob.core.windows.net/public/img/8600856373152463"
-        alt="CodeWorks Logo"
-        class="rounded-circle"
-      >
-      <h1 class="my-5 bg-dark text-white p-3 rounded text-center">
-        Vue 3 Starter
-      </h1>
-    </div>
+<section>
+  <div class="container-fluid hero-image">
+    
   </div>
+</section>
 </template>
 
 <script>
@@ -22,23 +15,13 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.home {
-  display: grid;
-  height: 80vh;
-  place-content: center;
-  text-align: center;
-  user-select: none;
-
-  .home-card {
-    width: 50vw;
-
-    >img {
-      height: 200px;
-      max-width: 200px;
-      width: 100%;
-      object-fit: contain;
-      object-position: center;
-    }
-  }
+.hero-image{
+  height: 100vh;
+  /* always scale the image to the appropriate size of your screen */
+  background-size: cover;
+  background-image: url(https://images.unsplash.com/photo-1604431696980-07e518647bec?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1775&q=80);
+  background-position: center;
+  /* keeps the image fixed while scrolling , neat effect. */
+  background-attachment: fixed; 
 }
 </style>

@@ -1,8 +1,8 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
+  <nav class="navbar navbar-expand-lg navbar-dark text-dark px-3  calligraphy ">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
-        <img alt="logo" src="../assets/img/cw-logo.png" height="45" />
+       <p class="fs-3 text-dark ">Samadhi Yoga Idaho</p>
       </div>
     </router-link>
     <button
@@ -19,13 +19,43 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto">
         <li>
-          <router-link :to="{ name: 'About' }" class="btn text-success lighten-30 selectable text-uppercase">
+          <router-link :to="{ name: 'About' }" class="btn   text-uppercase me-5 fw-bold fs-5 ">
+           Home
+          </router-link>
+        </li>
+        <li>
+          <router-link :to="{ name: 'About' }" class="btn   text-uppercase me-5 fw-bold fs-5 ">
             About
+          </router-link>
+        </li>
+        <li>
+          <router-link :to="{ name: 'About' }" class="btn   text-uppercase me-5 fw-bold fs-5 ">
+            Retreats
+          </router-link>
+        </li>
+        <li>
+          <router-link :to="{ name: 'About' }" class="btn   text-uppercase me-5 fw-bold fs-5 ">
+            Stay Updated
+          </router-link>
+        </li>
+        <li>
+          <router-link :to="{ name: 'About' }" class="btn   text-uppercase me-5 fw-bold fs-5 ">
+            Testimonials
+          </router-link>
+        </li>
+        <li>
+          <router-link :to="{ name: 'About' }" class="btn   text-uppercase me-5 fw-bold fs-5 ">
+           Contact
+          </router-link>
+        </li>
+        <li>
+          <router-link :to="{ name: 'About' }" class="btn   text-uppercase me-5 fw-bold fs-5 ">
+            FAQ
           </router-link>
         </li>
       </ul>
       <!-- LOGIN COMPONENT HERE -->
-      <Login />
+      <!-- <Login /> -->
     </div>
   </nav>
 </template>
@@ -41,6 +71,11 @@ export default {
 </script>
 
 <style scoped>
+
+.bg-test{
+background: rgb(0, 0, 0);
+background: linear-gradient(180deg, #2c2b2b 0%, rgba(29,84,66,0) 100%);
+}
 a:hover {
   text-decoration: none;
 }
@@ -50,9 +85,8 @@ a:hover {
 }
 
 .navbar-nav .router-link-exact-active {
-  border-bottom: 2px solid var(--bs-success);
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
+  border-bottom: 4px solid rgb(188, 84, 188);
+border-radius: 79%;
 }
 
 @media screen and (min-width: 768px) {

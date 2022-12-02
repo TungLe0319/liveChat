@@ -3,11 +3,14 @@
 @import "./_overrides.scss";
 @import "./_utilities.scss";
 @import "./loaders.scss";
-
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Audiowide&family=Bebas+Neue&family=Calligraffitti&family=Courgette&family=Oswald&family=Quando&family=Roboto&display=swap');
 body{
   overscroll-behavior: none;
 }
-
+.calligraphy{
+ font-family: 'Courgette', cursive;
+ 
+}
 #app {
   display: flex;
   flex-direction: column;

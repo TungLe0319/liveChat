@@ -1,6 +1,6 @@
 <template>
   <header>
-    <Navbar />
+    <Navbar class="elevation-5" />
   </header>
   <main>
     <router-view />
