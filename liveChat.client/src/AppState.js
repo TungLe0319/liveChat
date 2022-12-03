@@ -6,6 +6,8 @@ export const AppState = reactive({
   /** @type {import('./models/Account.js').Account} */
   account: {},
 
+  group: null,
+
 
   chats:[]
 })

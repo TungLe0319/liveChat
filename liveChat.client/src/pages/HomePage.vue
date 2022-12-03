@@ -8,16 +8,16 @@
         </div>
         <div class="card p-4 bg-success rounded w-25 " v-for="c in chats">
           <p class="fs-5" >{{ c.text }}</p>
+
+          <!--  -->
         </div>
-        <div class="empty p-5">
-          ertesgs
-        </div>
+        <div id="hey"></div>
       </div>
       <div class="col-md-12">
         <form @submit.prevent="handleSubmit()" class="form-control">
           <div class="form-floating">
             <textarea
-            v-model="editable"
+            v-model="editable.text"
               class="form-control"
               placeholder="Leave a comment here"
               id="floatingTextarea2"
@@ -37,6 +37,7 @@ import { computed,ref } from "@vue/reactivity";
 import { onMounted } from "vue";
 import { AppState } from "../AppState.js";
 import { supabaseService } from "../services/SubaseService.js";
+import Pop from "../utils/Pop";
 
 export default {
   setup() {
@@ -44,6 +45,7 @@ export default {
       getChats()
       
     })
+    const chat = ref({})
     const editable = ref('')
     async function getChats(){
       try {
@@ -56,10 +58,13 @@ export default {
 
       editable,
       chats: computed(() => AppState.chats),
+      account: computed(() => AppState.account),
+      group: computed(() => AppState.group),
       async handleSubmit() {
         try {
           await supabaseService.addSupabaseChat(editable.value);
-         document.querySelector('#empty').scrollTo
+          document.getElementById("hey").scrollIntoView(true)
+        //  document.querySelector('#empty').scrollTo
         } catch (error) {
           Pop.error(error, "[handleSubmit]");
         }
