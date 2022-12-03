@@ -9,15 +9,15 @@ import { api } from "./AxiosService";
 class AccountService {
   async getAccount(user) {
     try {
-      console.log(user);
-      const res = await supabase.from("accounts").select("*").eq("id", user.id).single();
+      // console.log(user);
+      const res = await supabase.from("accounts").select("*").eq("id", user.id)
 
-      console.log(res.data);
-      // if (!res) {
-      //   this.createProfile(user);
-      //   return;
-      // }
-      AppState.account = res.data;
+      // console.log(res.data);
+      if (!res.data[0]) {
+        this.createProfile(user);
+        return;
+      }
+      AppState.account = res.data[0]
     } catch (err) {
       logger.error("HAVE YOU STARTED YOUR SERVER YET???", err);
     }
@@ -25,7 +25,7 @@ class AccountService {
   async createProfile(user) {
     try {
       const res = await supabase.from("accounts").upsert(user).select().single();
-      console.log(res.data);
+      // console.log(res.data);
     } catch (error) {
       Pop.error(error);
     }

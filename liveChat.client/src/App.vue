@@ -9,12 +9,13 @@
     Made with 💖 by CodeWorks
   </footer>
   <!-- modals -->
-<!-- <CreateGroupModal/> -->
+<CreateGroupModal/>
 </template>
 
 <script>
 import { computed } from 'vue'
 import { AppState } from './AppState'
+
 import CreateGroupModal from './components/CreateGroupModal.vue'
 import Navbar from './components/Navbar.vue'
 
@@ -24,7 +25,7 @@ export default {
       appState: computed(() => AppState)
     }
   },
-  components: { Navbar}
+  components: { Navbar, CreateGroupModal }
 }
 </script>
 <style lang="scss">

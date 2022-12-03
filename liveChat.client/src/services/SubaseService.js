@@ -37,6 +37,15 @@ class SupabaseService {
       Pop.error(error);
     }
   }
+  async getGroups() {
+    try {
+      const res = await supabase.from("groups").select();
+      console.log(res.data);
+      AppState.groups = res.data;
+    } catch (error) {
+      Pop.error(error);
+    }
+  }
 
   addOrSkipArray(arr, item) {
     let found = arr.find((i) => i.id == item.id);
@@ -47,6 +56,10 @@ class SupabaseService {
   }
   async createGroup(groupData){
     const res = await supabase.from("groups").upsert(groupData).select()
+    console.log(res);
+  }
+  async joinGroup(memberData){
+    const res = await supabase.from("member").upsert(memberData).select()
     console.log(res);
   }
 }

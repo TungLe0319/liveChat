@@ -27,6 +27,7 @@ export default {
       async createGroup(){
         try {
             editable.value.creatorId = this.account?.id
+            console.log(editable.value);
             await supabaseService.createGroup(editable.value)
           } catch (error) {
             Pop.error(error)
