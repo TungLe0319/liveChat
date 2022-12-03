@@ -25,7 +25,7 @@ AuthService.on(AuthService.AUTH_EVENTS.AUTHENTICATED, async function () {
   api.defaults.headers.authorization = AuthService.bearer;
   api.interceptors.request.use(refreshAuthToken);
   AppState.user = AuthService.user;
-  // console.log(AppState.user);
+  console.log(AppState.user);
   await accountService.getAccount(new Account(AppState.user));
   socketService.authenticate(AuthService.bearer);
   // NOTE if there is something you want to do once the user is authenticated, place that here

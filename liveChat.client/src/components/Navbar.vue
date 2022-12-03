@@ -23,6 +23,11 @@
             About
           </router-link>
         </li>
+        <li>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  create group
+</button>
+        </li>
       </ul>
       <!-- LOGIN COMPONENT HERE -->
       <Login />

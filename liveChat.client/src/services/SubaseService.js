@@ -45,6 +45,10 @@ class SupabaseService {
       arr.push(item);
     }
   }
+  async createGroup(groupData){
+    const res = await supabase.from("groups").upsert(groupData).select()
+    console.log(res);
+  }
 }
 
 export const supabaseService = new SupabaseService();

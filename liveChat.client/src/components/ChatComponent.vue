@@ -1,5 +1,5 @@
 <template>
-  <div class="chatContainer container animate__animated animate__fadeIn">
+  <div class="chatContainer container animate__animated animate__fadeIn" v-if="chat">
     <div class="row">
       <div class="col-12">
         <div
@@ -21,7 +21,7 @@
         >
           <div class="bg-c4 rounded p-2 my-2 max-width">
             <img
-              :src="chat.creator.picture"
+              :src="chat.creator?.picture"
               :alt="chat.creator.name"
               :title="chat.creator.name"
               class="rounded-circle me-2 profilePic"

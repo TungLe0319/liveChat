@@ -8,11 +8,14 @@
    <footer class="bg-dark text-light">
     Made with 💖 by CodeWorks
   </footer>
+  <!-- modals -->
+<!-- <CreateGroupModal/> -->
 </template>
 
 <script>
 import { computed } from 'vue'
 import { AppState } from './AppState'
+import CreateGroupModal from './components/CreateGroupModal.vue'
 import Navbar from './components/Navbar.vue'
 
 export default {
@@ -21,7 +24,7 @@ export default {
       appState: computed(() => AppState)
     }
   },
-  components: { Navbar }
+  components: { Navbar}
 }
 </script>
 <style lang="scss">

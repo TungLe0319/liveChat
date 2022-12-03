@@ -45,8 +45,7 @@ export default {
       getChats()
       
     })
-    const chat = ref({})
-    const editable = ref('')
+    const editable = ref({})
     async function getChats(){
       try {
           await supabaseService.getChats()
@@ -76,9 +75,6 @@ export default {
 
 <style scoped lang="scss">
 
-.empty{
-
-}
 
 .scrollY{
   height: 60vh;

@@ -9,14 +9,14 @@ import { api } from "./AxiosService";
 class AccountService {
   async getAccount(user) {
     try {
-      // console.log(user);
+      console.log(user);
       const res = await supabase.from("accounts").select("*").eq("id", user.id).single();
 
       console.log(res.data);
-      if (!res) {
-        this.createProfile(user);
-        return;
-      }
+      // if (!res) {
+      //   this.createProfile(user);
+      //   return;
+      // }
       AppState.account = res.data;
     } catch (err) {
       logger.error("HAVE YOU STARTED YOUR SERVER YET???", err);
