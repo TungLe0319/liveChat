@@ -15,7 +15,9 @@ import { computed } from '@vue/reactivity';
 
 import { ref } from 'vue';
 import { AppState } from '../AppState';
-import { supabaseService } from '../services/SubaseService';
+import { chatsService } from '../services/ChatsService';
+
+
 import Pop from '../utils/Pop';
 
 export default {
@@ -28,7 +30,7 @@ export default {
         try {
             editable.value.creatorId = this.account?.id
             console.log(editable.value);
-            await supabaseService.createGroup(editable.value)
+            await chatsService.createGroup(editable.value)
           } catch (error) {
             Pop.error(error)
           }

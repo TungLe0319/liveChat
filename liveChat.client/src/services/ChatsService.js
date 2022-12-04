@@ -5,7 +5,7 @@ import { supabase } from "../../supabase";
 
 // import { chats } from "./FireBaseService";
 
-class SupabaseService {
+class ChatsService {
   async addSupabaseChat(chat) {
     try {
       console.log(chat);
@@ -20,28 +20,12 @@ class SupabaseService {
     }
   }
 
-  async getAccount(){
-    try {
-       const res =  await supabase.from("accounts").select()
-      } catch (error) {
-        Pop.error(error)
-      }
-
-  }
+ 
 
   async getChats() {
     try {
       const res = await supabase.from("Chats").select();
       AppState.chats = res.data;
-    } catch (error) {
-      Pop.error(error);
-    }
-  }
-  async getGroups() {
-    try {
-      const res = await supabase.from("groups").select();
-      console.log(res.data);
-      AppState.groups = res.data;
     } catch (error) {
       Pop.error(error);
     }
@@ -54,14 +38,7 @@ class SupabaseService {
       arr.push(item);
     }
   }
-  async createGroup(groupData){
-    const res = await supabase.from("groups").upsert(groupData).select()
-    console.log(res);
-  }
-  async joinGroup(memberData){
-    const res = await supabase.from("member").upsert(memberData).select()
-    console.log(res);
-  }
+ 
 }
 
-export const supabaseService = new SupabaseService();
+export const chatsService = new ChatsService();
