@@ -29,6 +29,7 @@
 </button>
         </li>
       </ul>
+      <button @click="changeUrl">button</button>
       <!-- LOGIN COMPONENT HERE -->
       <Login />
     </div>
@@ -36,10 +37,16 @@
 </template>
 
 <script>
+import { useRoute } from 'vue-router';
 import Login from './Login.vue'
 export default {
   setup() {
-    return {}
+    const route = useRoute()
+    return {
+      changeUrl(){
+        route.name = "Group"
+      }
+    }
   },
   components: { Login }
 }

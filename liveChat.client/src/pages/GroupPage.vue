@@ -6,7 +6,8 @@
 
 <script>
 import { onMounted } from 'vue';
-import { supabaseService } from '../services/SubaseService';
+import { groupsService } from '../services/GroupsService';
+
 import Pop from '../utils/Pop';
 
 export default {
@@ -16,7 +17,14 @@ export default {
     })
     async function joinGroup(){
       try {
-          await supabaseService.joinGroup()
+          await groupsService.joinGroup()
+        } catch (error) {
+          Pop.error(error)
+        }
+    }
+    async function getGroupsChats(){
+      try {
+          await groupsService.getGroupsChats()
         } catch (error) {
           Pop.error(error)
         }

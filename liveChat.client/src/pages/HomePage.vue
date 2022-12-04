@@ -1,43 +1,13 @@
 <template>
-  <!-- <div class="container bg-dark mt-5 rounded-5 p-5 mb-5">
-    <div class="row gy-auto">
-      <div class="col-md-12 p-2 scrollY ">
-        <div class="d-flex">
-          <p class="me-4 mb-0">Creator</p>
-          <p class="mb-0">createdAt</p>
-        </div>
-
-        
-        <div id="hey"></div>
-      </div>
-      <div class="" v-for="g in groups">
-        <GroupCard :group="g"/>
-
-     
-      </div>
-      <div class="col-md-12">
-        <form @submit.prevent="handleSubmit()" class="form-control d-flex justify-content-between">
-          <div class="form-floating p-2">
-            <textarea
-            v-model="editable.text"
-              class="form-control"
-              placeholder="Leave a comment here"
-              id="floatingTextarea2"
-              style="height: 100px"
-            ></textarea>
-            <label for="floatingTextarea2">Comments</label>
-          </div>
-          <button class="btn btn-outline-success fs-3 p-2" type="submit">POST</button>
-        </form>
-      </div>
-    </div>
-  </div> -->
+ 
   <div class="container-fluid bg-dark ">
      <div class="row ">
+      <!-- groupRooms -->
        <div class="col-md-1 bg-dark  p-2 room-icon-column text-center">
-   <img src="//thiscatdoesnotexist.com" alt="" class="room-icon my-2" v-for="i in 15">
+   <img src="//thiscatdoesnotexist.com" alt="" class="room-icon my-2" v-for="i in 15" @click="makeActiveGroup()">
        </div>
-
+<!-- !groupRooms -->
+<!-- chatRoom -->
        <div class="col-md-3 bg-light-dark px-0">
         <div class="room-title ">
           <button class="btn btn-outline-dark square text-light w-100 d-flex justify-content-between align-items-center">
@@ -62,8 +32,17 @@
           
 </div>
         </div>
-       </div>
 
+
+<!-- Whos In Channel -->
+<div class="p-3 d-flex">
+<img src="//thiscatdoesnotexist.com" alt=""  class="rounded-circle"  width="30" >
+<p class="mb-0 ms-3 text-grey fs-5"> online user name  </p>
+</div>
+
+
+       </div>
+<!-- !chatRoom -->
 
        <div class="col-md-8 bg-light2-dark d-flex flex-column align-content-between justify-content-between">
         <div class="chat-title-bar p-2 d-flex">
@@ -73,15 +52,29 @@
 </div>
         </div>
 
-         <div class="container">
-            <div class="row">
+<div class="chat-body container-fluid">
+
+
+    <div class="row scrollY">
+  <ChatComponent   v-for="c in chats "  :chat="c" />
+  <div id="hey"></div>
+    </div>
+ 
+  
+
+</div>
+         <div class=" chat-form container">
+            <div class="row bg-dark lighten-20 rounded-4 mb-3 pt-2">
               <div class="col-md-2 bg-dark lighten-20 rounded-4 mb-3">
                 <button class="btn "> <i class="mdi mdi-plus-circle fs-3 text-light"></i>   </button>
               </div>
               <div class="col-md-7">
                 <div class="mb-3">
-                  <label for="" class="form-label">Message #general</label>
-                  <textarea class="form-control bg-transparent border-0" name="" id="" rows="3"></textarea>
+          <form @submit.prevent="handleSubmit()" class="d-flex align-items-center">
+
+            <textarea class="form-control text-area text-light bg-transparent border-0" v-model="editable" name="" id="" rows="2" placeholder="Message #general"></textarea>
+            <button type="submit" class="btn btn-outline-dark">Submit</button>
+          </form>
                 </div>
               </div>
             </div>
@@ -97,6 +90,7 @@
 import { computed,ref } from "@vue/reactivity";
 import { onMounted } from "vue";
 import { AppState } from "../AppState.js";
+import ChatComponent from "../components/ChatComponent.vue";
 import GroupCard from "../components/GroupCard.vue";
 import { chatsService } from "../services/ChatsService";
 import { groupsService } from "../services/GroupsService";
@@ -109,7 +103,7 @@ export default {
             getChats();
             getGroups()
         });
-        const editable = ref({});
+        const editable = ref("");
         async function getChats() {
             try {
                 await chatsService.getChats();
@@ -134,7 +128,8 @@ export default {
             async handleSubmit() {
                 try {
                     await chatsService.addSupabaseChat(editable.value);
-                    document.getElementById("hey").scrollIntoView(true);
+                    document.getElementById("hey").scrollIntoView();
+                    Pop.success()
                     //  document.querySelector('#empty').scrollTo
                 }
                 catch (error) {
@@ -143,13 +138,17 @@ export default {
             },
         };
     },
-    components: { GroupCard }
+    components: { GroupCard, ChatComponent }
 };
 </script>
 
 <style scoped lang="scss">
+
+.text-area::placeholder{
+  font-size: 1.25rem ;
+}
 .room-icon-column{
-  height: 95vh;
+  height: 90vh;
 }
 .room-icon{
   border-radius: 50%;
@@ -157,12 +156,10 @@ export default {
   height: 60px;
 }
 .scrollY{
-  height: 60vh;
+  height: 79vh;
   overflow-y: auto;
   overflow-x: hidden;
-}
-.container-fluid {
-  height: 100vh;
+  padding-right: 1.5em;
 }
 
 

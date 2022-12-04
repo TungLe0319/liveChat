@@ -21,6 +21,8 @@ class GroupsService {
     const res = await supabase.from("member").upsert(memberData).select();
     console.log(res);
   }
-  //
+  async getGroupsChats(groupId){
+    const res = await (await supabase.from("Chats").select("*")).eq()
+  }
 }
 export const groupsService = new GroupsService();

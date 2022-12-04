@@ -8,6 +8,8 @@ export const AppState = reactive({
 
   groups: [],
 
+  activeGroup: null,
+
 
   chats:[]
 })
