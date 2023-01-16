@@ -14,11 +14,12 @@ class ChatsService {
       }
 
       let data = { text: chat, creatorId: AppState.account.id };
-      console.log(data);
-      const res = await supabase.from("Chats").upsert(data).select();
+      // console.log(data);
+      const res = await supabase.from("chats").upsert(data).select();
       // const res = await supabase.from("chats")
-      let chat = new Chat(res.data[0])
-      this.addOrSkipArray(AppState.chats, chat);
+      const newChat = new Chat(res.data[0])
+      console.log(newChat);
+      this.addOrSkipArray(AppState.chats, newChat);
     } catch (error) {
       Pop.error(error);
     }
@@ -26,7 +27,7 @@ class ChatsService {
 
   async getChats() {
     try {
-      const res = await supabase.from("Chats").select("*");
+      const res = await supabase.from("chats").select("*, accounts(*)");
 
       
       console.log(res.data);

@@ -56,7 +56,7 @@
 
 
     <div class="row scrollY">
-  <ChatComponent   v-for="c in chats "  :chat="c" />
+  <ChatComponent   v-for="c in chats "  :chat="c" v-if="chats"/>
   <div id="hey"></div>
     </div>
  

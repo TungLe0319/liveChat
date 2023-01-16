@@ -1,5 +1,5 @@
 <template>
-  <div class="chatContainer text-light  selectable container animate__animated animate__fadeIn" v-if="chat" >
+  <div class="chatContainer text-light  selectable container animate__animated animate__fadeIn" >
     <div class="row ">
       <div 
       :class="newChat? ' border-top border-danger border-3' : ''"
@@ -12,7 +12,7 @@
 
           <div class="name-createdAt d-flex">
 <p class="mb-0  fs-5 me-2 fw-bold"> creator Name </p> 
-            <span class="mt-2 time">{{ new Date(chat.created_at).toLocaleDateString() }}</span>
+            <span class="mt-2 time">{{chat.created_at}}</span>
           </div>
           <div
             class="bg-c2 rounded-3 p-2 max-width"
